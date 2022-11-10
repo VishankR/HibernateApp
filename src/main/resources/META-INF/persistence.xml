@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+
+        <class>entity.CustomersEntity</class>
+        <class>entity.EmployeesEntity</class>
+        <class>entity.InventorytransactionsEntity</class>
+        <class>entity.InventorytransactiontypesEntity</class>
+        <class>entity.InvoicesEntity</class>
+        <class>entity.OrderdetailsEntity</class>
+        <class>entity.OrderdetailsstatusEntity</class>
+        <class>entity.OrdersEntity</class>
+        <class>entity.OrdersstatusEntity</class>
+        <class>entity.OrderstaxstatusEntity</class>
+        <class>entity.ProductsEntity</class>
+        <class>entity.PurchaseorderdetailsEntity</class>
+        <class>entity.PurchaseordersEntity</class>
+        <class>entity.PurchaseorderstatusEntity</class>
+        <class>entity.ShippersEntity</class>
+        <class>entity.StringsEntity</class>
+        <class>entity.SuppliersEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/northwind"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value="vishank"/>
+            <property name="hibernate.connection.password" value="vishank"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
