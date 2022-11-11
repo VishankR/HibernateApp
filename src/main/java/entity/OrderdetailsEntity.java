@@ -14,7 +14,6 @@ public class OrderdetailsEntity {
     private BigDecimal quantity;
     private BigDecimal unitPrice;
     private double discount;
-    //private Integer statusId;
     private Timestamp dateAllocated;
     private Integer purchaseOrderId;
     private Integer inventoryId;
@@ -131,9 +130,9 @@ public class OrderdetailsEntity {
                 ", dateAllocated=" + dateAllocated +
                 ", purchaseOrderId=" + purchaseOrderId +
                 ", inventoryId=" + inventoryId +
-                ", ordersByOrderId=" + ordersByOrderId +
-                ", productsByProductId=" + productsByProductId +
-                ", orderdetailsstatusByStatusId=" + orderdetailsstatusByStatusId +
+                ", ordersByOrderId=" + ordersByOrderId.getId() +
+                ", productsByProductId=" + productsByProductId.getId() +
+                ", orderdetailsstatusByStatusId=" + orderdetailsstatusByStatusId.getId() +
                 '}';
     }
 }

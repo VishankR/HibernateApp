@@ -110,9 +110,9 @@ public class PurchaseorderdetailsEntity {
                 ", unitCost=" + unitCost +
                 ", dateReceived=" + dateReceived +
                 ", postedToInventory=" + postedToInventory +
-                ", purchaseordersByPurchaseOrderId=" + purchaseordersByPurchaseOrderId +
-                ", productsByProductId=" + productsByProductId +
-                ", inventorytransactionsByInventoryId=" + inventorytransactionsByInventoryId +
+                ", purchaseordersByPurchaseOrderId=" + purchaseordersByPurchaseOrderId.getId() +
+                ", productsByProductId=" + productsByProductId.getId() +
+                ", inventorytransactionsByInventoryId=" + inventorytransactionsByInventoryId.getId() +
                 '}';
     }
 }

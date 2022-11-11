@@ -131,10 +131,10 @@ public class InventorytransactionsEntity {
                 ", transactionModifiedDate=" + transactionModifiedDate +
                 ", quantity=" + quantity +
                 ", comments='" + comments + '\'' +
-                ", inventorytransactiontypesByTransactionType=" + inventorytransactiontypesByTransactionType +
-                ", productsByProductId=" + productsByProductId +
-                ", purchaseordersByPurchaseOrderId=" + purchaseordersByPurchaseOrderId +
-                ", ordersByCustomerOrderId=" + ordersByCustomerOrderId +
+                ", inventorytransactiontypesByTransactionType=" + inventorytransactiontypesByTransactionType.getId() +
+                ", productsByProductId=" + productsByProductId.getId() +
+                ", purchaseordersByPurchaseOrderId=" + purchaseordersByPurchaseOrderId.getId() +
+                ", ordersByCustomerOrderId=" + ordersByCustomerOrderId.getId() +
                 ", purchaseorderdetailsById=" + purchaseorderdetailsById +
                 '}';
     }

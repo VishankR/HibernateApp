@@ -1,11 +1,15 @@
 package entity;
 
+import org.hibernate.annotations.Polymorphism;
+import org.hibernate.annotations.PolymorphismType;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+/*@Polymorphism(type = PolymorphismType.EXPLICIT)*/
 @Table(name = "invoices", schema = "northwind")
 public class InvoicesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,7 +103,7 @@ public class InvoicesEntity {
                 ", tax=" + tax +
                 ", shipping=" + shipping +
                 ", amountDue=" + amountDue +
-                ", ordersByOrderId=" + ordersByOrderId +
+                ", ordersByOrderId=" + ordersByOrderId.getId() +
                 '}';
     }
 }

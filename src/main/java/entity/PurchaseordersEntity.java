@@ -213,9 +213,9 @@ public class PurchaseordersEntity {
                 ", submittedBy=" + submittedBy +
                 ", inventorytransactionsById=" + inventorytransactionsById +
                 ", purchaseorderdetailsById=" + purchaseorderdetailsById +
-                ", suppliersBySupplierId=" + suppliersBySupplierId +
-                ", employeesByCreatedBy=" + employeesByCreatedBy +
-                ", purchaseorderstatusByStatusId=" + purchaseorderstatusByStatusId +
+                ", suppliersBySupplierId=" + suppliersBySupplierId.getId() +
+                ", employeesByCreatedBy=" + employeesByCreatedBy.getId() +
+                ", purchaseorderstatusByStatusId=" + purchaseorderstatusByStatusId.getId() +
                 '}';
     }
 }

@@ -266,11 +266,11 @@ public class OrdersEntity {
                 ", inventorytransactionsById=" + inventorytransactionsById +
                 ", invoicesById=" + invoicesById +
                 ", orderdetailsById=" + orderdetailsById +
-                ", employeesByEmployeeId=" + employeesByEmployeeId +
-                ", customersByCustomerId=" + customersByCustomerId +
-                ", shippersByShipperId=" + shippersByShipperId +
-                ", orderstaxstatusByTaxStatusId=" + orderstaxstatusByTaxStatusId +
-                ", ordersstatusByStatusId=" + ordersstatusByStatusId +
+                ", employeesByEmployeeId=" + employeesByEmployeeId.getId() +
+                ", customersByCustomerId=" + customersByCustomerId.getId() +
+                ", shippersByShipperId=" + shippersByShipperId.getId() +
+                ", orderstaxstatusByTaxStatusId=" /*+ orderstaxstatusByTaxStatusId.getId()*/ +
+                ", ordersstatusByStatusId=" + ordersstatusByStatusId.getId() +
                 '}';
     }
 }

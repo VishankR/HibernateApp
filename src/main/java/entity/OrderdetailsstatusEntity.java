@@ -1,5 +1,8 @@
 package entity;
 
+import org.hibernate.annotations.Polymorphism;
+import org.hibernate.annotations.PolymorphismType;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
