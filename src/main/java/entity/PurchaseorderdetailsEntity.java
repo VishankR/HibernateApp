@@ -11,21 +11,18 @@ public class PurchaseorderdetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    private int purchaseOrderId;
-    private Integer productId;
     private BigDecimal quantity;
     private BigDecimal unitCost;
     private Timestamp dateReceived;
     private byte postedToInventory;
-    private Integer inventoryId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "purchaseOrderId", referencedColumnName = "id", nullable = false)
     private PurchaseordersEntity purchaseordersByPurchaseOrderId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "productId", referencedColumnName = "id")
     private ProductsEntity productsByProductId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "inventoryId", referencedColumnName = "id")
     private InventorytransactionsEntity inventorytransactionsByInventoryId;
 
     public int getId() {
@@ -34,22 +31,6 @@ public class PurchaseorderdetailsEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPurchaseOrderId() {
-        return purchaseOrderId;
-    }
-
-    public void setPurchaseOrderId(int purchaseOrderId) {
-        this.purchaseOrderId = purchaseOrderId;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
     }
 
     public BigDecimal getQuantity() {
@@ -84,25 +65,17 @@ public class PurchaseorderdetailsEntity {
         this.postedToInventory = postedToInventory;
     }
 
-    public Integer getInventoryId() {
-        return inventoryId;
-    }
-
-    public void setInventoryId(Integer inventoryId) {
-        this.inventoryId = inventoryId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PurchaseorderdetailsEntity that = (PurchaseorderdetailsEntity) o;
-        return id == that.id && purchaseOrderId == that.purchaseOrderId && postedToInventory == that.postedToInventory && Objects.equals(productId, that.productId) && Objects.equals(quantity, that.quantity) && Objects.equals(unitCost, that.unitCost) && Objects.equals(dateReceived, that.dateReceived) && Objects.equals(inventoryId, that.inventoryId);
+        return id == that.id && postedToInventory == that.postedToInventory && Objects.equals(quantity, that.quantity) && Objects.equals(unitCost, that.unitCost) && Objects.equals(dateReceived, that.dateReceived);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, purchaseOrderId, productId, quantity, unitCost, dateReceived, postedToInventory, inventoryId);
+        return Objects.hash(id, quantity, unitCost, dateReceived, postedToInventory);
     }
 
     public PurchaseordersEntity getPurchaseordersByPurchaseOrderId() {
@@ -133,13 +106,10 @@ public class PurchaseorderdetailsEntity {
     public String toString() {
         return "PurchaseorderdetailsEntity{" +
                 "id=" + id +
-                ", purchaseOrderId=" + purchaseOrderId +
-                ", productId=" + productId +
                 ", quantity=" + quantity +
                 ", unitCost=" + unitCost +
                 ", dateReceived=" + dateReceived +
                 ", postedToInventory=" + postedToInventory +
-                ", inventoryId=" + inventoryId +
                 ", purchaseordersByPurchaseOrderId=" + purchaseordersByPurchaseOrderId +
                 ", productsByProductId=" + productsByProductId +
                 ", inventorytransactionsByInventoryId=" + inventorytransactionsByInventoryId +

@@ -11,14 +11,13 @@ public class InvoicesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    private Integer orderId;
     private Timestamp invoiceDate;
     private Timestamp dueDate;
     private BigDecimal tax;
     private BigDecimal shipping;
     private BigDecimal amountDue;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "orderId", referencedColumnName = "id")
     private OrdersEntity ordersByOrderId;
 
     public int getId() {
@@ -27,14 +26,6 @@ public class InvoicesEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
     }
 
     public Timestamp getInvoiceDate() {
@@ -82,12 +73,12 @@ public class InvoicesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoicesEntity that = (InvoicesEntity) o;
-        return id == that.id && Objects.equals(orderId, that.orderId) && Objects.equals(invoiceDate, that.invoiceDate) && Objects.equals(dueDate, that.dueDate) && Objects.equals(tax, that.tax) && Objects.equals(shipping, that.shipping) && Objects.equals(amountDue, that.amountDue);
+        return id == that.id /*&& Objects.equals(orderId, that.orderId)*/ && Objects.equals(invoiceDate, that.invoiceDate) && Objects.equals(dueDate, that.dueDate) && Objects.equals(tax, that.tax) && Objects.equals(shipping, that.shipping) && Objects.equals(amountDue, that.amountDue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, orderId, invoiceDate, dueDate, tax, shipping, amountDue);
+        return Objects.hash(id/*, orderId*/, invoiceDate, dueDate, tax, shipping, amountDue);
     }
 
     public OrdersEntity getOrdersByOrderId() {
@@ -102,7 +93,7 @@ public class InvoicesEntity {
     public String toString() {
         return "InvoicesEntity{" +
                 "id=" + id +
-                ", orderId=" + orderId +
+                /*", orderId=" + orderId +*/
                 ", invoiceDate=" + invoiceDate +
                 ", dueDate=" + dueDate +
                 ", tax=" + tax +

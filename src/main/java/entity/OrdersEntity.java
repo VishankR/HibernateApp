@@ -12,11 +12,8 @@ public class OrdersEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    private Integer employeeId;
-    private Integer customerId;
     private Timestamp orderDate;
     private Timestamp shippedDate;
-    private Integer shipperId;
     private String shipName;
     private String shipAddress;
     private String shipCity;
@@ -29,8 +26,6 @@ public class OrdersEntity {
     private Timestamp paidDate;
     private String notes;
     private Double taxRate;
-    private Byte taxStatusId;
-    private Byte statusId;
     @OneToMany(mappedBy = "ordersByCustomerOrderId")
     private Collection<InventorytransactionsEntity> inventorytransactionsById;
     @OneToMany(mappedBy = "ordersByOrderId")
@@ -38,19 +33,19 @@ public class OrdersEntity {
     @OneToMany(mappedBy = "ordersByOrderId")
     private Collection<OrderdetailsEntity> orderdetailsById;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "employeeId", referencedColumnName = "id")
     private EmployeesEntity employeesByEmployeeId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
     private CustomersEntity customersByCustomerId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "shipperId", referencedColumnName = "id")
     private ShippersEntity shippersByShipperId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "taxStatusId", referencedColumnName = "id")
     private OrderstaxstatusEntity orderstaxstatusByTaxStatusId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "statusId", referencedColumnName = "id")
     private OrdersstatusEntity ordersstatusByStatusId;
 
     public int getId() {
@@ -59,22 +54,6 @@ public class OrdersEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
     }
 
     public Timestamp getOrderDate() {
@@ -91,14 +70,6 @@ public class OrdersEntity {
 
     public void setShippedDate(Timestamp shippedDate) {
         this.shippedDate = shippedDate;
-    }
-
-    public Integer getShipperId() {
-        return shipperId;
-    }
-
-    public void setShipperId(Integer shipperId) {
-        this.shipperId = shipperId;
     }
 
     public String getShipName() {
@@ -197,33 +168,17 @@ public class OrdersEntity {
         this.taxRate = taxRate;
     }
 
-    public Byte getTaxStatusId() {
-        return taxStatusId;
-    }
-
-    public void setTaxStatusId(Byte taxStatusId) {
-        this.taxStatusId = taxStatusId;
-    }
-
-    public Byte getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Byte statusId) {
-        this.statusId = statusId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrdersEntity that = (OrdersEntity) o;
-        return id == that.id && Objects.equals(employeeId, that.employeeId) && Objects.equals(customerId, that.customerId) && Objects.equals(orderDate, that.orderDate) && Objects.equals(shippedDate, that.shippedDate) && Objects.equals(shipperId, that.shipperId) && Objects.equals(shipName, that.shipName) && Objects.equals(shipAddress, that.shipAddress) && Objects.equals(shipCity, that.shipCity) && Objects.equals(shipStateProvince, that.shipStateProvince) && Objects.equals(shipZipPostalCode, that.shipZipPostalCode) && Objects.equals(shipCountryRegion, that.shipCountryRegion) && Objects.equals(shippingFee, that.shippingFee) && Objects.equals(taxes, that.taxes) && Objects.equals(paymentType, that.paymentType) && Objects.equals(paidDate, that.paidDate) && Objects.equals(notes, that.notes) && Objects.equals(taxRate, that.taxRate) && Objects.equals(taxStatusId, that.taxStatusId) && Objects.equals(statusId, that.statusId);
+        return id == that.id && Objects.equals(orderDate, that.orderDate) && Objects.equals(shippedDate, that.shippedDate) && Objects.equals(shipName, that.shipName) && Objects.equals(shipAddress, that.shipAddress) && Objects.equals(shipCity, that.shipCity) && Objects.equals(shipStateProvince, that.shipStateProvince) && Objects.equals(shipZipPostalCode, that.shipZipPostalCode) && Objects.equals(shipCountryRegion, that.shipCountryRegion) && Objects.equals(shippingFee, that.shippingFee) && Objects.equals(taxes, that.taxes) && Objects.equals(paymentType, that.paymentType) && Objects.equals(paidDate, that.paidDate) && Objects.equals(notes, that.notes) && Objects.equals(taxRate, that.taxRate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, employeeId, customerId, orderDate, shippedDate, shipperId, shipName, shipAddress, shipCity, shipStateProvince, shipZipPostalCode, shipCountryRegion, shippingFee, taxes, paymentType, paidDate, notes, taxRate, taxStatusId, statusId);
+        return Objects.hash(id, orderDate, shippedDate, shipName, shipAddress, shipCity, shipStateProvince, shipZipPostalCode, shipCountryRegion, shippingFee, taxes, paymentType, paidDate, notes, taxRate);
     }
 
     public Collection<InventorytransactionsEntity> getInventorytransactionsById() {
@@ -294,11 +249,8 @@ public class OrdersEntity {
     public String toString() {
         return "OrdersEntity{" +
                 "id=" + id +
-                ", employeeId=" + employeeId +
-                ", customerId=" + customerId +
                 ", orderDate=" + orderDate +
                 ", shippedDate=" + shippedDate +
-                ", shipperId=" + shipperId +
                 ", shipName='" + shipName + '\'' +
                 ", shipAddress='" + shipAddress + '\'' +
                 ", shipCity='" + shipCity + '\'' +
@@ -311,8 +263,6 @@ public class OrdersEntity {
                 ", paidDate=" + paidDate +
                 ", notes='" + notes + '\'' +
                 ", taxRate=" + taxRate +
-                ", taxStatusId=" + taxStatusId +
-                ", statusId=" + statusId +
                 ", inventorytransactionsById=" + inventorytransactionsById +
                 ", invoicesById=" + invoicesById +
                 ", orderdetailsById=" + orderdetailsById +

@@ -11,23 +11,21 @@ public class OrderdetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    private int orderId;
-    private Integer productId;
     private BigDecimal quantity;
     private BigDecimal unitPrice;
     private double discount;
-    private Integer statusId;
+    //private Integer statusId;
     private Timestamp dateAllocated;
     private Integer purchaseOrderId;
     private Integer inventoryId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "orderId", referencedColumnName = "id", nullable = false)
     private OrdersEntity ordersByOrderId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "productId", referencedColumnName = "id")
     private ProductsEntity productsByProductId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "statusId", referencedColumnName = "id")
     private OrderdetailsstatusEntity orderdetailsstatusByStatusId;
 
     public int getId() {
@@ -36,22 +34,6 @@ public class OrderdetailsEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
     }
 
     public BigDecimal getQuantity() {
@@ -76,14 +58,6 @@ public class OrderdetailsEntity {
 
     public void setDiscount(double discount) {
         this.discount = discount;
-    }
-
-    public Integer getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
     }
 
     public Timestamp getDateAllocated() {
@@ -115,12 +89,12 @@ public class OrderdetailsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderdetailsEntity that = (OrderdetailsEntity) o;
-        return id == that.id && orderId == that.orderId && Double.compare(that.discount, discount) == 0 && Objects.equals(productId, that.productId) && Objects.equals(quantity, that.quantity) && Objects.equals(unitPrice, that.unitPrice) && Objects.equals(statusId, that.statusId) && Objects.equals(dateAllocated, that.dateAllocated) && Objects.equals(purchaseOrderId, that.purchaseOrderId) && Objects.equals(inventoryId, that.inventoryId);
+        return id == that.id && Double.compare(that.discount, discount) == 0 && Objects.equals(quantity, that.quantity) && Objects.equals(unitPrice, that.unitPrice) && Objects.equals(dateAllocated, that.dateAllocated) && Objects.equals(purchaseOrderId, that.purchaseOrderId) && Objects.equals(inventoryId, that.inventoryId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, orderId, productId, quantity, unitPrice, discount, statusId, dateAllocated, purchaseOrderId, inventoryId);
+        return Objects.hash(id, quantity, unitPrice, discount, dateAllocated, purchaseOrderId, inventoryId);
     }
 
     public OrdersEntity getOrdersByOrderId() {
@@ -151,12 +125,9 @@ public class OrderdetailsEntity {
     public String toString() {
         return "OrderdetailsEntity{" +
                 "id=" + id +
-                ", orderId=" + orderId +
-                ", productId=" + productId +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +
                 ", discount=" + discount +
-                ", statusId=" + statusId +
                 ", dateAllocated=" + dateAllocated +
                 ", purchaseOrderId=" + purchaseOrderId +
                 ", inventoryId=" + inventoryId +

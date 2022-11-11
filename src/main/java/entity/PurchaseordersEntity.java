@@ -12,11 +12,8 @@ public class PurchaseordersEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    private Integer supplierId;
-    private Integer createdBy;
     private Timestamp submittedDate;
     private Timestamp creationDate;
-    private Integer statusId;
     private Timestamp expectedDate;
     private BigDecimal shippingFee;
     private BigDecimal taxes;
@@ -32,13 +29,13 @@ public class PurchaseordersEntity {
     @OneToMany(mappedBy = "purchaseordersByPurchaseOrderId")
     private Collection<PurchaseorderdetailsEntity> purchaseorderdetailsById;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "supplierId", referencedColumnName = "id")
     private SuppliersEntity suppliersBySupplierId;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "createdBy", referencedColumnName = "id")
     private EmployeesEntity employeesByCreatedBy;
     @ManyToOne
-    @JoinColumn( referencedColumnName = "id")
+    @JoinColumn(name = "statusId", referencedColumnName = "id")
     private PurchaseorderstatusEntity purchaseorderstatusByStatusId;
 
     public int getId() {
@@ -47,22 +44,6 @@ public class PurchaseordersEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Integer getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(Integer supplierId) {
-        this.supplierId = supplierId;
-    }
-
-    public Integer getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Integer createdBy) {
-        this.createdBy = createdBy;
     }
 
     public Timestamp getSubmittedDate() {
@@ -79,14 +60,6 @@ public class PurchaseordersEntity {
 
     public void setCreationDate(Timestamp creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public Integer getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
     }
 
     public Timestamp getExpectedDate() {
@@ -174,12 +147,12 @@ public class PurchaseordersEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PurchaseordersEntity that = (PurchaseordersEntity) o;
-        return id == that.id && Objects.equals(supplierId, that.supplierId) && Objects.equals(createdBy, that.createdBy) && Objects.equals(submittedDate, that.submittedDate) && Objects.equals(creationDate, that.creationDate) && Objects.equals(statusId, that.statusId) && Objects.equals(expectedDate, that.expectedDate) && Objects.equals(shippingFee, that.shippingFee) && Objects.equals(taxes, that.taxes) && Objects.equals(paymentDate, that.paymentDate) && Objects.equals(paymentAmount, that.paymentAmount) && Objects.equals(paymentMethod, that.paymentMethod) && Objects.equals(notes, that.notes) && Objects.equals(approvedBy, that.approvedBy) && Objects.equals(approvedDate, that.approvedDate) && Objects.equals(submittedBy, that.submittedBy);
+        return id == that.id && Objects.equals(submittedDate, that.submittedDate) && Objects.equals(creationDate, that.creationDate) && Objects.equals(expectedDate, that.expectedDate) && Objects.equals(shippingFee, that.shippingFee) && Objects.equals(taxes, that.taxes) && Objects.equals(paymentDate, that.paymentDate) && Objects.equals(paymentAmount, that.paymentAmount) && Objects.equals(paymentMethod, that.paymentMethod) && Objects.equals(notes, that.notes) && Objects.equals(approvedBy, that.approvedBy) && Objects.equals(approvedDate, that.approvedDate) && Objects.equals(submittedBy, that.submittedBy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, supplierId, createdBy, submittedDate, creationDate, statusId, expectedDate, shippingFee, taxes, paymentDate, paymentAmount, paymentMethod, notes, approvedBy, approvedDate, submittedBy);
+        return Objects.hash(id, submittedDate, creationDate, expectedDate, shippingFee, taxes, paymentDate, paymentAmount, paymentMethod, notes, approvedBy, approvedDate, submittedBy);
     }
 
     public Collection<InventorytransactionsEntity> getInventorytransactionsById() {
@@ -226,11 +199,8 @@ public class PurchaseordersEntity {
     public String toString() {
         return "PurchaseordersEntity{" +
                 "id=" + id +
-                ", supplierId=" + supplierId +
-                ", createdBy=" + createdBy +
                 ", submittedDate=" + submittedDate +
                 ", creationDate=" + creationDate +
-                ", statusId=" + statusId +
                 ", expectedDate=" + expectedDate +
                 ", shippingFee=" + shippingFee +
                 ", taxes=" + taxes +
