@@ -1,5 +1,5 @@
-->  If you give an whole entity reference in select clause then superclass polymorphism happens and may select queries gets generated on the basis of
-    superclass. For eg. for query "QUERY_GET_ORDER_BY_STATUS" if we use SELECT o instead of o.shipName then select queries will be generated on the
-    basis of superclass of OrdersEntity for eg. here Employees, Customers. But if superclass is not an Entity (which happens when superclass is annotated
-    with @MappedSuperClass) then dynamic polymorphism wont happen for that superclass. For every separate superclass and subclass (All subclasses that
-    have 1->n mapping with this current class and All superclasses that have n->1 mapping with this current class) a separate select query will be generated.
+->  If you give an whole entity reference in select clause then for classes having any mapping with this class, separate select
+    queries get generated. For eg. for query "QUERY_GET_ORDER_BY_STATUS" if we use SELECT o instead of o.shipName then select queries will be generated
+    for all classes which have any relationship with OrdersEntity.
+->  If superclass is not an Entity (which happens when superclass is annotated with @MappedSuperClass) then dynamic polymorphism wont happen for that
+    superclass.

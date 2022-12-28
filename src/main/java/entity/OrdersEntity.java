@@ -269,7 +269,6 @@ public class OrdersEntity {
                 ", employeesByEmployeeId=" + employeesByEmployeeId.getId() +
                 ", customersByCustomerId=" + customersByCustomerId.getId() +
                 ", shippersByShipperId=" + shippersByShipperId.getId() +
-                ", orderstaxstatusByTaxStatusId=" /*+ orderstaxstatusByTaxStatusId.getId()*/ +
                 ", ordersstatusByStatusId=" + ordersstatusByStatusId.getId() +
                 '}';
     }
